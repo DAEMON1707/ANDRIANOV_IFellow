@@ -2,7 +2,7 @@
  * Форма "Просмотр проектов".
  */
 
-package ru.iFellow.Pages;
+package ru.iFellow.pages;
 
 import com.codeborne.selenide.SelenideElement;
 

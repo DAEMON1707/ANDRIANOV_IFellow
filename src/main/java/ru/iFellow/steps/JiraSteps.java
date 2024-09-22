@@ -2,12 +2,15 @@
  * Шаги тестирования.
  */
 
-import config.WebHooks;
-import ru.iFellow.Pages.*;
+package ru.iFellow.steps;
+
+import com.codeborne.selenide.Selenide;
+import ru.iFellow.pages.*;
 
 public class JiraSteps {
 
     private final JiraDashboardPage jiraDashboardPage = new JiraDashboardPage();
+    private final JiraMenu jiraMenu = new JiraMenu();
     private final JiraProjectPage jiraProjectPage = new JiraProjectPage();
 
     /**
@@ -46,10 +49,10 @@ public class JiraSteps {
      * @return количество задач
      */
     public Integer stepCreateQuickTask(String summary) {
-        JiraCreateTaskPage jiraCreateTaskPage = JiraMenu.clickButtonCreateTask();
+        JiraCreateTaskPage jiraCreateTaskPage = jiraMenu.clickButtonCreateTask();
         jiraCreateTaskPage.setFieldSummary(summary);
         jiraCreateTaskPage.clickButtonCreate();
-        WebHooks.refresh();
+        Selenide.refresh();
         return jiraProjectPage.getCountTasks();
     }
 
@@ -63,7 +66,7 @@ public class JiraSteps {
      * @param versions затронуты версии
      */
     public void stepCreateFullTask(String summary, String description, String fixVersions, String environment, String label, String versions) {
-        JiraCreateTaskPage jiraCreateTaskPage = JiraMenu.clickButtonCreateTask();
+        JiraCreateTaskPage jiraCreateTaskPage = jiraMenu.clickButtonCreateTask();
         jiraCreateTaskPage.setFieldSummary(summary);
         jiraCreateTaskPage.setDescription(description);
         jiraCreateTaskPage.selectFixVersions(fixVersions);
@@ -72,7 +75,7 @@ public class JiraSteps {
         jiraCreateTaskPage.selectVersions(versions);
         jiraCreateTaskPage.clickButtonAssignToMeTrigger();
         jiraCreateTaskPage.clickButtonCreate();
-        WebHooks.refresh();
+        Selenide.refresh();
     }
 
     /**
@@ -80,7 +83,7 @@ public class JiraSteps {
      * @param summaryTask тема задачи
      */
     public void stepOpenTask(String summaryTask) {
-        JiraMenu.openSearchTask(summaryTask);
+        jiraMenu.openSearchTask(summaryTask);
     }
 
     /**

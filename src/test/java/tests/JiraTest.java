@@ -1,29 +1,30 @@
-/**
+package tests; /**
  * Базовый класс для выполнения тестов.
  */
 
-import config.WebHooks;
+import hooks.WebHooks;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.iFellow.Pages.*;
+import ru.iFellow.pages.*;
+import ru.iFellow.steps.JiraSteps;
+import ru.iFellow.config.ConfigProvider;
 
-import static readProperties.ConfigProvider.*;
+public class JiraTest extends WebHooks implements ConfigProvider {
 
-public class JiraTest extends WebHooks {
-
+    private final JiraMenu jiraMenu = new JiraMenu();
     private final JiraProjectPage jiraProjectPage = new JiraProjectPage();
     private final JiraSteps jiraSteps = new JiraSteps();
 
     @Test
     public void checkStepAuthorization() {
         jiraSteps.stepAuthorization(URL, USER_LOGIN, USER_PASSWORD);
-        Assertions.assertEquals(USER_LOGIN, JiraMenu.getUserLogin());
+        Assertions.assertEquals(USER_LOGIN, jiraMenu.getUserLogin());
     }
 
     @Test
     public void checkStepOpenProject() {
         jiraSteps.stepAuthorization(URL, USER_LOGIN, USER_PASSWORD);
-        Assertions.assertEquals(USER_LOGIN, JiraMenu.getUserLogin());
+        Assertions.assertEquals(USER_LOGIN, jiraMenu.getUserLogin());
 
         jiraSteps.stepOpenFormProject(TEST_PROJECT);
         Assertions.assertEquals(TEST_PROJECT, jiraProjectPage.getNameProject());
@@ -32,7 +33,7 @@ public class JiraTest extends WebHooks {
     @Test
     public void checkStepCountingQuantityTasks() {
         jiraSteps.stepAuthorization(URL, USER_LOGIN, USER_PASSWORD);
-        Assertions.assertEquals(USER_LOGIN, JiraMenu.getUserLogin());
+        Assertions.assertEquals(USER_LOGIN, jiraMenu.getUserLogin());
 
         jiraSteps.stepOpenFormProject(TEST_PROJECT);
         Assertions.assertEquals(TEST_PROJECT, jiraProjectPage.getNameProject());
@@ -45,7 +46,7 @@ public class JiraTest extends WebHooks {
     @Test
     public void checkStepOpenTask() {
         jiraSteps.stepAuthorization(URL, USER_LOGIN, USER_PASSWORD);
-        Assertions.assertEquals(USER_LOGIN, JiraMenu.getUserLogin());
+        Assertions.assertEquals(USER_LOGIN, jiraMenu.getUserLogin());
 
         jiraSteps.stepOpenFormProject(TEST_PROJECT);
         Assertions.assertEquals(TEST_PROJECT, jiraProjectPage.getNameProject());
@@ -67,7 +68,7 @@ public class JiraTest extends WebHooks {
     @Test
     public void checkStepCreateFullTask() {
         jiraSteps.stepAuthorization(URL, USER_LOGIN, USER_PASSWORD);
-        Assertions.assertEquals(USER_LOGIN, JiraMenu.getUserLogin());
+        Assertions.assertEquals(USER_LOGIN, jiraMenu.getUserLogin());
 
         jiraSteps.stepCreateFullTask(TEST_SUMMARY, "Описание", "Version 2.0", "Окружение","Метка", "Version 1.0");
         jiraSteps.stepOpenTask(TEST_SUMMARY);

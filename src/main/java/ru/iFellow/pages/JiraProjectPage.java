@@ -2,7 +2,7 @@
  * Форма "Проект" открытая по определенному проекту.
  */
 
-package ru.iFellow.Pages;
+package ru.iFellow.pages;
 
 import com.codeborne.selenide.SelenideElement;
 

@@ -2,7 +2,7 @@
  * Форма "System Dashboard".
  */
 
-package ru.iFellow.Pages;
+package ru.iFellow.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;

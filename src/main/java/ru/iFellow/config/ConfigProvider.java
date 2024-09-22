@@ -1,4 +1,4 @@
-package readProperties;
+package ru.iFellow.config;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
