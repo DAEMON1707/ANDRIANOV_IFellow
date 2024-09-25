@@ -1,7 +1,8 @@
-package hooks;
+package ru.iFellow.hooks;
 
 import com.codeborne.selenide.*;
-import org.junit.jupiter.api.*;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -21,12 +22,12 @@ public class WebHooks {
         WebDriverRunner.setWebDriver(driver);
     }
 
-    @BeforeEach
+    @Before
     public void init() {
         setUp();
     }
 
-    @AfterEach
+    @After
     public void tearDown() {
         WebDriverRunner.closeWebDriver();
     }

@@ -77,6 +77,6 @@ public class JiraCreateTaskPage {
      * @param label наименование метки
      */
     public void setLabels(String label) {
-        textareaLabels.$x("./textarea").setValue(label).pressEnter();
+        textareaLabels.setValue(label).pressEnter();
     }
 }

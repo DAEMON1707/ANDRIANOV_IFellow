@@ -6,6 +6,8 @@ package ru.iFellow.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.cucumber.java.en.Given;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class JiraDashboardPage {

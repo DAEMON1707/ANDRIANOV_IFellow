@@ -21,8 +21,6 @@ public class JiraMenu {
         return $x("//li[contains(@original-title, '" + originalTitle + "')]").as("Задача \"" + originalTitle + "\" в выпадающем списке поиска");
     }
 
-
-
     /**
      * Нажатие на кнопку "Создать".
      * @return экземпляр класса JiraCreateTaskPage
