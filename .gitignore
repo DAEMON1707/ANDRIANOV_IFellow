@@ -1,2 +1,6 @@
 # Default ignored files
+.allure/
 .idea/
+build/
+target/
+.iml

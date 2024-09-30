@@ -1,4 +1,6 @@
 # Default ignored files
+.allure/
 .idea/
-/workspace.xml
-/vcs.xml
+build/
+target/
+.iml

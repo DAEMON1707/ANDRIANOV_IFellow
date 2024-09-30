@@ -5,6 +5,7 @@ import iFellow.api.EpisodeApi;
 import iFellow.functions.Functions;
 import iFellow.hooks.Hooks;
 import iFellow.properties.Props;
+import io.cucumber.java.ru.Когда;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +18,7 @@ public class TestApi extends Hooks {
     EpisodeApi episodeApi = new EpisodeApi();
 
     @Test
+    @Когда("Проверка API")
     public void checkCreateUserApi () {
         String responseCharacterApi = characterApi.getSingleCharacter(Props.props.characterId());
         Integer lastEpisodeId = functions.getIdLastElements(from(responseCharacterApi).getList("episode"));
@@ -31,4 +33,6 @@ public class TestApi extends Hooks {
         Assertions.assertNotEquals(from(responseLastCharacterApi).getString("location.name"),
                 from(responseCharacterApi).getString("location.name"));
     }
+
+
 }
