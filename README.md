@@ -25,41 +25,47 @@
 </details>
 
 <!-- Введение -->
-## Введение
+# Введение
 <a id="introduction"></a>
 Данный проект создан в качестве практического задания по курсу обучения автоматизации тестирования [iFellow](https://ifellow.ru).
 
 <!-- Домашняя работа -->
-## Домашняя работа
+# Домашняя работа
 <a id="home-works"></a>
 Каждое домашнее задание выполняется в отдельной ветки проекта.
 
 <p align="right"><a href="#readme-top">вверх</a></p>
 
-### Домашняя работа №2
+## Домашняя работа №2
 <a id="home-work-2"></a>
 Создание проекта.
 
 <p align="right"><a href="#readme-top">вверх</a></p>
 
-### Домашняя работа №3
+## Домашняя работа №3
 <a id="home-work-3"></a>
+Ветка: [IF_HW_3](https://github.com/DAEMON1707/ANDRIANOV_IFellow/tree/IF_HW_3)
+
 Первая практическая работа по проекту.
 
 По паттерну PageObject реализовано тестирование [Jira](https://edujira.ifellow.ru).
 
 <p align="right"><a href="#readme-top">вверх</a></p>
 
-### Домашняя работа №4
+## Домашняя работа №4
 <a id="home-work-4"></a>
+Ветка: [IF_HW_4](https://github.com/DAEMON1707/ANDRIANOV_IFellow/tree/IF_HW_4)
+
 Перевод проекта из предыдущего задания в Cucumber.
 
 <p align="right"><a href="#readme-top">вверх</a></p>
 
-### Домашняя работа №5
+## Домашняя работа №5
 <a id="home-work-5"></a>
-#### Задача №1
+### Задача №1
 <a id="home-work-5-task-1"></a>
+Ветка: [IF_HW_5_1](https://github.com/DAEMON1707/ANDRIANOV_IFellow/tree/IF_HW_5_1)
+
 Погружение в API.
 
 На [сайте](https://rickandmortyapi.com/documentation/#episode-schema) есть документация по API по сериалу Рик и Морти.
@@ -70,8 +76,10 @@
 
 <p align="right"><a href="#readme-top">вверх</a></p>
 
-#### Задача №2
+### Задача №2
 <a id="home-work-5-task-2"></a>
+Ветка: [IF_HW_5_2](https://github.com/DAEMON1707/ANDRIANOV_IFellow/tree/IF_HW_5_2)
+
 Углубление в API.
 
 Написан тест с использованием **Json**!
@@ -88,8 +96,10 @@
 
 <p align="right"><a href="#readme-top">вверх</a></p>
 
-### Домашняя работа №6
+## Домашняя работа №6
 <a id="home-work-6"></a>
+Ветка: [IF_HW_6](https://github.com/DAEMON1707/ANDRIANOV_IFellow/tree/IF_HW_6)
+
 Добавлен **allure** + **property**!
 
 Возможно осуществить запуск тестов командой:
