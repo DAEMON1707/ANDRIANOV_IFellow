@@ -1,9 +1,9 @@
 <a id="readme-top"></a>
 
 <!-- Содержание -->
-<details>
-  <summary>Содержание</summary>
-  <ol>
+# Содержание
+<a id="content"></a>
+<ol>
     <li><a href="#introduction">Введение</a></li>
     <li>
         <a href="#home-works">Домашняя работа</a>
@@ -21,8 +21,7 @@
             <li><a href="#home-work-6">Домашняя работа №6</a></li>
         </ul>
     </li>
-  </ol>
-</details>
+</ol>
 
 <!-- Введение -->
 # Введение
