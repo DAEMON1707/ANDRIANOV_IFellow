@@ -13,6 +13,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <allure-junit5.version>2.24.0</allure-junit5.version>
         <compiler.version>17</compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -28,7 +29,6 @@
         <owner.version>1.0.10</owner.version>
         <jsch.version>0.1.55</jsch.version>
         <sshd-core.version>2.7.0</sshd-core.version>
-        <allureJunit5.version>2.24.0</allureJunit5.version>
         <cucumber.7.jvm.version>2.24.0</cucumber.7.jvm.version>
         <allure.version>2.24.0</allure.version>
         <allure-maven.version>2.24.0</allure-maven.version>
@@ -88,7 +88,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
-            <version>${allureJunit5.version}</version>
+            <version>${allure-junit5.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -141,7 +141,6 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

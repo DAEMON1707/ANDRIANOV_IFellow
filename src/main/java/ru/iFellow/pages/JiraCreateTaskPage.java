@@ -16,7 +16,7 @@ public class JiraCreateTaskPage {
     private final SelenideElement selectVersions = $x("//select[@id='versions']");
     private final SelenideElement textareaDescription = $x("//textarea[@id='description']");
     private final SelenideElement textareaEnvironment = $x("//textarea[@id='environment']");
-    private final SelenideElement textareaLabels = $x("//div[@id='labels-multi-select']/textarea");
+    private final SelenideElement textareaLabels = $x("//div[@id='labels-multi-select']");
 
     /**
      * Нажатие на кнопку "Назначить меня".
