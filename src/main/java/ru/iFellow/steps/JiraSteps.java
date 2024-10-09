@@ -5,6 +5,7 @@
 package ru.iFellow.steps;
 
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Step;
 import ru.iFellow.pages.*;
 
 public class JiraSteps {
@@ -18,6 +19,7 @@ public class JiraSteps {
      * @param login логин
      * @param password пароль
      */
+    @Step("Авторизация под логином {login}")
     public void stepAuthorization(String url, String login, String password) {
         jiraDashboardPage.openWebSite(url);
         jiraDashboardPage.setLogin(login);
@@ -29,15 +31,17 @@ public class JiraSteps {
      * Открытие проекта.
      * @param project имя проекта
      */
+    @Step("Открытие проекта {project}")
     public void stepOpenFormProject(String project) {
         JiraBrowseProjectsPage jiraBrowseProjectsPage = jiraDashboardPage.clickButtonMenuProjectsViewAllProjects();
         jiraBrowseProjectsPage.inputFieldProjectFilterText(project);
-        JiraBrowseProjectsPage.clickSearchProject(project);
+        jiraBrowseProjectsPage.clickSearchProject(project);
     }
 
     /**
      * Открывает форму "Задачи" на боковой панели.
      */
+    @Step("Открытие формы \"Задачи\"")
     public void stepOpenFormTasks() {
         JiraProjectPage jiraProjectPage = new JiraProjectPage();
         jiraProjectPage.clickButtonSidebarTasks();
@@ -48,6 +52,7 @@ public class JiraSteps {
      * @param summary тема задачи
      * @return количество задач
      */
+    @Step("Быстрое создание задачи с темой {summary}")
     public Integer stepCreateQuickTask(String summary) {
         JiraCreateTaskPage jiraCreateTaskPage = jiraMenu.clickButtonCreateTask();
         jiraCreateTaskPage.setFieldSummary(summary);
@@ -65,6 +70,7 @@ public class JiraSteps {
      * @param label метка
      * @param versions затронуты версии
      */
+    @Step("Создание задачи с темой {summary}")
     public void stepCreateFullTask(String summary, String description, String fixVersions, String environment, String label, String versions) {
         JiraCreateTaskPage jiraCreateTaskPage = jiraMenu.clickButtonCreateTask();
         jiraCreateTaskPage.setFieldSummary(summary);
@@ -82,6 +88,7 @@ public class JiraSteps {
      * Открывает задачу.
      * @param summaryTask тема задачи
      */
+    @Step("Открытие задачи {summaryTask}")
     public void stepOpenTask(String summaryTask) {
         jiraMenu.openSearchTask(summaryTask);
     }
@@ -90,6 +97,7 @@ public class JiraSteps {
      * Смена статуса задачи.
      * @param status статус (В РАБОТЕ / РЕШЕННЫЕ / ПЕРЕОТКРЫТ / ГОТОВО)
      */
+    @Step("Смена статуса на {status}")
     public void stepChangeStatus(String status) {
         switch(status) {
             case "В РАБОТЕ":

@@ -9,10 +9,20 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class JiraBrowseProjectsPage {
-    private final SelenideElement inputProjectFilterText = $x("//input[@id='project-filter-text']");
+    private final SelenideElement inputProjectFilterText = $x("//input[@id='project-filter-text']").as("Поиск");
+    private final SelenideElement tbodyProjectsList = $x("//tbody").as("Таблица");
 
     /**
-     * Ввод значения в фильт по проектам.
+     * Выбор проекта в таблице.
+     * @param project проект.
+     * @return таблица с выбранным проектом.
+     */
+    private SelenideElement selectProject(String project) {
+        return tbodyProjectsList.$x(".//a[contains(@title,'" + project + "')]").as("Таблица с выбранным проектом \"" + project + "\"");
+    }
+
+    /**
+     * Ввод значения в фильтр по проектам.
      * @param text text
      */
     public void inputFieldProjectFilterText(String text) {
@@ -23,8 +33,7 @@ public class JiraBrowseProjectsPage {
      * Нажатие на имя проекта в таблице проектов.
      * @param project имя проекта.
      */
-    public static JiraProjectPage clickSearchProject(String project) {
-        $x("//tbody//a[contains(@title,'" + project + "')]").click();
-        return new JiraProjectPage();
+    public void clickSearchProject(String project) {
+        selectProject(project).click();
     }
 }

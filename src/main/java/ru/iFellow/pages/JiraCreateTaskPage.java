@@ -9,14 +9,24 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class JiraCreateTaskPage {
-    private final SelenideElement buttonAssignToMeTrigger = $x("//button[@id='assign-to-me-trigger']");
-    private final SelenideElement inputButtonCreate = $x("//input[@id='create-issue-submit']");
-    private final SelenideElement inputFieldSummary = $x("//input[@id='summary']");
-    private final SelenideElement selectFixVersions = $x("//select[@id='fixVersions']");
-    private final SelenideElement selectVersions = $x("//select[@id='versions']");
-    private final SelenideElement textareaDescription = $x("//textarea[@id='description']");
-    private final SelenideElement textareaEnvironment = $x("//textarea[@id='environment']");
-    private final SelenideElement textareaLabels = $x("//div[@id='labels-multi-select']");
+    private final SelenideElement buttonAssignToMeTrigger = $x("//button[@id='assign-to-me-trigger']").as("Кнопка \"Назначить меня\"");
+    private final SelenideElement inputButtonCreate = $x("//input[@id='create-issue-submit']").as("Кнопка \"Создать\"");
+    private final SelenideElement inputFieldSummary = $x("//input[@id='summary']").as("Поле \"Тема\"");
+    private final SelenideElement selectFixVersions = $x("//select[@id='fixVersions']").as("Поле \"Исправить в версиях\"");
+    private final SelenideElement selectVersions = $x("//select[@id='versions']").as("Поле \"Затронутые версии\"");
+    private final SelenideElement textareaDescription = $x("//textarea[@id='description']").as("Поле \"Описание\"");
+    private final SelenideElement textareaEnvironment = $x("//textarea[@id='environment']").as("Поле \"Окружение\"");
+    private final SelenideElement textareaLabels = $x("//div[@id='labels-multi-select']/textarea").as("Поле \"Метки\"");
+
+    /**
+     * Выбор элемента списка.
+     * @param select список.
+     * @param value значение.
+     * @return список с выбранным значением.
+     */
+    private SelenideElement selectVersion (SelenideElement select, String value) {
+        return select.$x(".//option[contains(text(), '" + value + "')]").as(select + " с выбранным значением \"" + value + "\"");
+    }
 
     /**
      * Нажатие на кнопку "Назначить меня".
@@ -61,7 +71,7 @@ public class JiraCreateTaskPage {
      * @param fixVersions версия
      */
     public void selectFixVersions(String fixVersions) {
-        selectFixVersions.$x(".//option[contains(text(), '" + fixVersions + "')]").click();
+        selectVersion(selectFixVersions, fixVersions).click();
     }
 
     /**
@@ -69,7 +79,7 @@ public class JiraCreateTaskPage {
      * @param versions версия
      */
     public void selectVersions(String versions) {
-        selectVersions.$x(".//option[contains(text(), '" + versions + "')]").click();
+        selectVersion(selectVersions, versions).click();
     }
 
     /**
@@ -77,6 +87,6 @@ public class JiraCreateTaskPage {
      * @param label наименование метки
      */
     public void setLabels(String label) {
-        textareaLabels.$x("./textarea").setValue(label).pressEnter();
+        textareaLabels.setValue(label).pressEnter();
     }
 }

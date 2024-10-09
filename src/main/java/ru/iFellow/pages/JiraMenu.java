@@ -8,9 +8,9 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class JiraMenu {
-    private final SelenideElement aButtonCreateTask = $x("//a[@id='create_link']");
-    private final SelenideElement inputSearch = $x("//input[@id='quickSearchInput']");
-    private final SelenideElement imgProfile = $x("//img[starts-with(@alt,'Пользовательский профиль для')]");
+    private final SelenideElement aButtonCreateTask = $x("//a[@id='create_link']").as("Кнопка \"Создать\"");
+    private final SelenideElement inputSearch = $x("//input[@id='quickSearchInput']").as("Поле \"Поиск\"");
+    private final SelenideElement imgProfile = $x("//img[starts-with(@alt,'Пользовательский профиль для')]").as("Кнопка \"Профиль\"");
 
     /**
      * Определение динамического элемента отвечающего за определенную задачу в выпадающем списке поиска.
@@ -20,7 +20,6 @@ public class JiraMenu {
     private SelenideElement liOriginalTitle(String originalTitle){
         return $x("//li[contains(@original-title, '" + originalTitle + "')]").as("Задача \"" + originalTitle + "\" в выпадающем списке поиска");
     }
-
 
 
     /**

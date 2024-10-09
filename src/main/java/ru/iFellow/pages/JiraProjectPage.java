@@ -10,16 +10,25 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class JiraProjectPage {
-    private final SelenideElement aNameProject = $x("//div[@class='aui-item project-title']//a");
-    private final SelenideElement aSidebarTasks = $x("//a[@data-link-id='com.atlassian.jira.jira-projects-issue-navigator:sidebar-issue-navigator']");
-    private final SelenideElement aTaskFixVersions = $x("//span[@id='fixVersions-field']/a");
-    private final SelenideElement aTaskKey = $x("//a[@id='key-val']");
-    private final SelenideElement divCommandBar = $x("//div[@class='command-bar']");
-    private final SelenideElement inputButtonSubmit = $x("//input[@id='issue-workflow-transition-submit']");
-    private final SelenideElement h1TaskSummary = $x("//h1[@id='summary-val']");
-    private final SelenideElement spanCountTasks = $x("//span[contains(text(),' из ')]");
-    private final SelenideElement spanHeadingPage = $x("//h1//span[@id='issues-subnavigation-title']");
-    private final SelenideElement spanTaskStatus = $x("//span[@id='status-val']/span");
+    private final SelenideElement aNameProject = $x("//div[@class='aui-item project-title']//a").as("Наименование проекта");
+    private final SelenideElement aSidebarTasks = $x("//a[@data-link-id='com.atlassian.jira.jira-projects-issue-navigator:sidebar-issue-navigator']").as("Пункт боковой панели \"Задачи\"");
+    private final SelenideElement aTaskFixVersions = $x("//span[@id='fixVersions-field']/a").as("Параметр задачи \"Исправить в версиях\"");
+    private final SelenideElement divCommandBar = $x("//div[@class='command-bar']").as("Панель команд");
+    private final SelenideElement inputButtonSubmit = $x("//input[@id='issue-workflow-transition-submit']").as("Кнопка подтверждения смены статуса");
+    private final SelenideElement h1TaskSummary = $x("//h1[@id='summary-val']").as("Тема задачи");
+    private final SelenideElement spanCountTasks = $x("//span[contains(text(),' из ')]").as("Порядковый номер задачи из общего числа задач");
+    private final SelenideElement spanHeadingPage = $x("//h1//span[@id='issues-subnavigation-title']").as("Заголовок страницы");
+    private final SelenideElement spanTaskStatus = $x("//span[@id='status-val']/span").as("Статус задачи");
+
+    /**
+     * Получение кнопки из панели команд.
+     * @param button кнопка, которую необходимо вернуть.
+     * @return кнопка.
+     */
+    private SelenideElement getButtonCommandBar(String button) {
+        return divCommandBar.$x(".//span[contains(text(), '" + button +"')]/..").as("Кнопка \"" + button + "\"");
+    }
+
 
     /**
      * Получить наименование проекта.
@@ -59,10 +68,6 @@ public class JiraProjectPage {
         return spanHeadingPage.text();
     }
 
-    public String getTaskKey() {
-        return aTaskKey.text();
-    }
-
     /**
      * Получение темы задачи.
      * @return тема
@@ -100,6 +105,6 @@ public class JiraProjectPage {
      * @param button наименование кнопки (В работе / Исполнено / Переоткрыт / Выполнено / Бизнес-процесс)
      */
     public void clickButtonCommandBar(String button) {
-        divCommandBar.$x(".//span[contains(text(), '" + button +"')]/..").click();
+        getButtonCommandBar(button).click();
     }
 }

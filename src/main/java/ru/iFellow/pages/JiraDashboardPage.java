@@ -9,11 +9,11 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class JiraDashboardPage {
-    private final SelenideElement aProfile = $x("//a[@id='browse_link']");
-    private final SelenideElement aViewAllProjects = $x("//a[@id='project_view_all_link_lnk']");
-    private final SelenideElement inputLogin = $x("//input[@id='login-form-username']");
-    private final SelenideElement inputPassword = $x("//input[@id='login-form-password']");
-    private final SelenideElement buttonLogin = $x("//input[@id='login']");
+    private final SelenideElement aProfile = $x("//a[@id='browse_link']").as("Меню \"Проекты\"");
+    private final SelenideElement aViewAllProjects = $x("//a[@id='project_view_all_link_lnk']").as("Пункт выпадающего списка \"Просмотр всех проектов\"");
+    private final SelenideElement inputLogin = $x("//input[@id='login-form-username']").as("Поле ввода \"Имя пользователя\"");
+    private final SelenideElement inputPassword = $x("//input[@id='login-form-password']").as("Поле ввода \"Пароль\"");
+    private final SelenideElement buttonLogin = $x("//input[@id='login']").as("Кнопа \"Войти\"");
 
     public void openWebSite (String url) {
         Selenide.open(url);
