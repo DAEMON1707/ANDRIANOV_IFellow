@@ -150,6 +150,8 @@ mvn allure:"serve"
 
 Добавлен Cucumber.
 
+Добавлен Allure.
+
 Доведено до идеала.
 
 <p align="right"><a href="#readme-top">вверх</a></p>
