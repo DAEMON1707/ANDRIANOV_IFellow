@@ -6,7 +6,6 @@ package ru.iFellow.tests;
 
 import ru.iFellow.hooks.WebHooks;
 import io.qameta.allure.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.iFellow.pages.*;
@@ -87,6 +86,7 @@ public class JiraTest extends WebHooks {
     @Owner("Dmitry Andrianov")
     @DisplayName("Создание задачи")
     @Description("Проверка что задача создается с теми параметрами, что были указаны при создании")
+    @Severity(SeverityLevel.NORMAL)
     @Step("Создание задачи")
     public void checkStepCreateFullTask() {
         jiraSteps.stepAuthorization(props.url(), props.userLogin(), props.userPassword());

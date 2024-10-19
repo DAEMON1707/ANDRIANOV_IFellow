@@ -49,4 +49,6 @@ public interface Props extends Config{
     @Config.Key("test.task.fixVersions")
     String testTaskFixVersions();
 
+    @Config.Key("drivers.chromedriver.path")
+    String driversChromeDriverPath();
 }

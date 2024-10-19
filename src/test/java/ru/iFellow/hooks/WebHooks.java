@@ -7,6 +7,8 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import static ru.iFellow.properties.Props.props;
+
 public class WebHooks {
 
     private static void setUp() {
@@ -18,6 +20,11 @@ public class WebHooks {
 
         // Разворачиваем окно браузера на весь экран
         options.addArguments("--start-maximized");
+
+        //Проверяем переменную "driversChromeDriverPath", если она есть, то используем ее, иначе используем путь по умолчанию.
+        if (props.driversChromeDriverPath() != null) {
+            System.setProperty("webdriver.chrome.driver", props.driversChromeDriverPath());
+        }
 
         ChromeDriver driver = new ChromeDriver(options);
         WebDriverRunner.setWebDriver(driver);
