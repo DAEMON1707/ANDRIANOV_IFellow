@@ -1,7 +1,6 @@
 package iFellow.hooks;
 
 import iFellow.api.specifications.Specifications;
-import io.cucumber.java.Before;
 import io.restassured.RestAssured;
 
 import static iFellow.properties.Props.props;
