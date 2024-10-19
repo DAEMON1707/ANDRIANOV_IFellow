@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.path.json.JsonPath.from;
 
-public class TestApi extends Hooks {
+public class TestApi {
 
     Functions functions = new Functions();
     CharacterApi characterApi = new CharacterApi();
