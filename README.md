@@ -1,4 +1,4 @@
-<a id="readme-top"></a>
+a id="readme-top"></a>
 
 <!-- Содержание -->
 # Содержание
@@ -19,6 +19,13 @@
                 </ul>
             </li>
             <li><a href="#home-work-6">Домашняя работа №6</a></li>
+            <li>
+                <a href="#final-home-work">Финальная домашняя работа</a>
+                <ul>
+                    <li><a href="#final-home-work-task-1">Задача №1</a></li>
+                    <li><a href="#final-home-work-task-2">Задача №2</a></li>
+                </ul>
+            </li>
         </ul>
     </li>
 </ol>
@@ -119,5 +126,30 @@ mvn allure:"serve"
 Исправлен `.gitignor`.
 
 В удаленном репозитории на основном экране ветки отображаются только `src`, `pom.xml`, `readme`, `.gitignor`.
+
+<p align="right"><a href="#readme-top">вверх</a></p>
+
+## Финальная домашняя работа
+<a id="final-home-work"></a>
+
+### Задача №1
+<a id="final-home-work-task-1"></a>
+Ветка: [FHW_UI](https://github.com/DAEMON1707/ANDRIANOV_IFellow/tree/FHW_UI)
+
+Добавлена возможность запуска ChromeDriver из папки по пользовательскому пути.
+
+Доведено до идеала.
+
+<p align="right"><a href="#readme-top">вверх</a></p>
+
+### Задача №2
+<a id="final-home-work-task-2"></a>
+Ветка: [FHW_API](https://github.com/DAEMON1707/ANDRIANOV_IFellow/tree/FHW_API)
+
+Слиты ветки [IF_HW_5_1](https://github.com/DAEMON1707/ANDRIANOV_IFellow/tree/IF_HW_5_1) и [IF_HW_5_2](https://github.com/DAEMON1707/ANDRIANOV_IFellow/tree/IF_HW_5_2).
+
+Добавлен Cucumber.
+
+Доведено до идеала.
 
 <p align="right"><a href="#readme-top">вверх</a></p>
