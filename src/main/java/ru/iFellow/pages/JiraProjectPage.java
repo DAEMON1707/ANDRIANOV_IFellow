@@ -77,13 +77,14 @@ public class JiraProjectPage {
     }
 
     /**
-     * Получение статуса задачи с ожиданием изменения статуса. Костыль на скорую руку.
+     * Получение статуса задачи с ожиданием изменения статуса.
      * @param externalText ожидаемый статус
      * @return статус
      */
     public String getTaskStatus(String externalText) {
         return spanTaskStatus.shouldHave(text(externalText)).text();
     }
+
     /**
      * Получение статуса задачи.
      * @return статус

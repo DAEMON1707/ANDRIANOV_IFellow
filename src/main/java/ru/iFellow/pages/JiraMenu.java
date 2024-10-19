@@ -45,8 +45,7 @@ public class JiraMenu {
      * Открывает страницу задачи через строку поиска.
      * @param search поисковой запрос
      */
-    public void openSearchTask(String search) {
-        inputSearch.setValue(search);
-        liOriginalTitle(search).click();
+    public void searchTask(String search) {
+        inputSearch.setValue(search).pressEnter();
     }
 }

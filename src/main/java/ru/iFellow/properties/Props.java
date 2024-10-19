@@ -19,11 +19,26 @@ public interface Props extends Config{
     @Config.Key("user.password")
     String userPassword();
 
+    @Config.Key("test.project")
+    String testProject();
+
     @Config.Key("test.summary")
     String testSummary();
 
-    @Config.Key("test.project")
-    String testProject();
+    @Config.Key("test.description")
+    String testDescription();
+
+    @Config.Key("test.fixVersions")
+    String testFixVersions();
+
+    @Config.Key("test.environment")
+    String testEnvironment();
+
+    @Config.Key("test.label")
+    String testLabel();
+
+    @Config.Key("test.versions")
+    String testVersions();
 
     @Config.Key("test.task.summary")
     String testTaskSummary();
@@ -33,4 +48,5 @@ public interface Props extends Config{
 
     @Config.Key("test.task.fixVersions")
     String testTaskFixVersions();
+
 }

@@ -24,96 +24,88 @@ public class JiraTest extends WebHooks {
     @Owner("Dmitry Andrianov")
     @DisplayName("Авторизация")
     @Description("Проверка авторизации")
-    @Step("Проверка авторизации")
+    @Severity(SeverityLevel.BLOCKER)
+    @Step("Авторизация")
     public void checkStepAuthorization() {
         jiraSteps.stepAuthorization(props.url(), props.userLogin(), props.userPassword());
-        Assertions.assertEquals(props.userLogin(), jiraMenu.getUserLogin());
+        jiraSteps.stepCheckAuthorization(props.userLogin());
     }
 
     @Test
     @Owner("Dmitry Andrianov")
     @DisplayName("Открытие проекта")
     @Description("Проверка открытия проекта")
-    @Step("Проверка открытия проекта")
+    @Severity(SeverityLevel.CRITICAL)
+    @Step("Открытие проекта")
     public void checkStepOpenProject() {
         jiraSteps.stepAuthorization(props.url(), props.userLogin(), props.userPassword());
-        Assertions.assertEquals(props.userLogin(), jiraMenu.getUserLogin());
+        jiraSteps.stepCheckAuthorization(props.userLogin());
 
         jiraSteps.stepOpenFormProject(props.testProject());
-        Assertions.assertEquals(props.testProject(), jiraProjectPage.getNameProject());
+        jiraSteps.stepCheckOpenFormProject(props.testProject());
     }
 
     @Test
     @Owner("Dmitry Andrianov")
     @DisplayName("Количество задач")
     @Description("Проверка корректности общего числа задач на странице")
-    @Step("Проверка корректности общего числа задач на странице")
+    @Severity(SeverityLevel.NORMAL)
+    @Step("Количество задач")
     public void checkStepCountingQuantityTasks() {
         jiraSteps.stepAuthorization(props.url(), props.userLogin(), props.userPassword());
-        Assertions.assertEquals(props.userLogin(), jiraMenu.getUserLogin());
+        jiraSteps.stepCheckAuthorization(props.userLogin());
 
         jiraSteps.stepOpenFormProject(props.testProject());
-        Assertions.assertEquals(props.testProject(), jiraProjectPage.getNameProject());
+        jiraSteps.stepCheckOpenFormProject(props.testProject());
 
         jiraSteps.stepOpenFormTasks();
-        Assertions.assertEquals("Открытые задачи", jiraProjectPage.getHeadingPage());
-        Assertions.assertEquals(jiraProjectPage.getCountTasks() + 1,jiraSteps.stepCreateQuickTask(props.testSummary()));
+        jiraSteps.stepCheckOpenFormTasks();
+        jiraSteps.stepCheckCountingQuantityTasks(props.testSummary());
     }
 
     @Test
     @Owner("Dmitry Andrianov")
     @DisplayName("Открытие задачи")
     @Description("Проверка открытия задачи")
-    @Step("Проверка открытия задачи")
+    @Severity(SeverityLevel.CRITICAL)
+    @Step("Открытие задачи")
     public void checkStepOpenTask() {
         jiraSteps.stepAuthorization(props.url(), props.userLogin(), props.userPassword());
-        Assertions.assertEquals(props.userLogin(), jiraMenu.getUserLogin());
+        jiraSteps.stepCheckAuthorization(props.userLogin());
 
         jiraSteps.stepOpenFormProject(props.testProject());
-        Assertions.assertEquals(props.testProject(), jiraProjectPage.getNameProject());
+        jiraSteps.stepCheckOpenFormProject(props.testProject());
 
         jiraSteps.stepOpenFormTasks();
-        Assertions.assertAll("stepOpenFromTasks",
-                () -> Assertions.assertEquals("Открытые задачи", jiraProjectPage.getHeadingPage()),
-                () -> Assertions.assertEquals(jiraProjectPage.getCountTasks() + 1,jiraSteps.stepCreateQuickTask(props.testSummary()))
-        );
+        jiraSteps.stepCheckOpenFormTasks();
 
         jiraSteps.stepOpenTask(props.testTaskSummary());
-        System.out.println(props.testTaskStatus());
-        Assertions.assertAll("stepOpenTask",
-                () -> Assertions.assertEquals(props.testTaskSummary(), jiraProjectPage.getTaskSummary()),
-                () -> Assertions.assertEquals(props.testTaskStatus(), jiraProjectPage.getTaskStatus()),
-                () -> Assertions.assertEquals(props.testTaskFixVersions(), jiraProjectPage.getTaskFixVersions())
-        );
+        jiraSteps.checkStepOpenTask(props.testTaskSummary(), props.testTaskStatus(), props.testTaskFixVersions());
     }
 
     @Test
     @Owner("Dmitry Andrianov")
     @DisplayName("Создание задачи")
     @Description("Проверка что задача создается с теми параметрами, что были указаны при создании")
-    @Step("Проверка что задача создается с теми параметрами, что были указаны при создании")
+    @Step("Создание задачи")
     public void checkStepCreateFullTask() {
         jiraSteps.stepAuthorization(props.url(), props.userLogin(), props.userPassword());
-        Assertions.assertEquals(props.userLogin(), jiraMenu.getUserLogin());
+        jiraSteps.stepCheckAuthorization(props.userLogin());
 
-        jiraSteps.stepCreateFullTask(props.testProject(), "Описание", "Version 2.0", "Окружение","Метка", "Version 1.0");
-        jiraSteps.stepOpenTask(props.testProject());
-        Assertions.assertAll("checkCreateTask",
-                () -> Assertions.assertEquals(props.testProject(), jiraProjectPage.getTaskSummary()),
-                () -> Assertions.assertEquals("СДЕЛАТЬ", jiraProjectPage.getTaskStatus()),
-                () -> Assertions.assertEquals("Version 2.0", jiraProjectPage.getTaskFixVersions())
-        );
+        jiraSteps.stepCreateFullTask(props.testSummary(), props.testDescription(), props.testFixVersions(), props.testEnvironment(), props.testLabel(), props.testVersions());
+        jiraSteps.stepOpenTask(props.testSummary());
+        jiraSteps.checkStepOpenTask(props.testSummary(), "СДЕЛАТЬ", props.testFixVersions());
 
         jiraSteps.stepChangeStatus("В РАБОТЕ");
-        Assertions.assertEquals("В РАБОТЕ", jiraProjectPage.getTaskStatus("В РАБОТЕ"));
+        jiraSteps.checkStepChangeStatus("В РАБОТЕ");
 
         jiraSteps.stepChangeStatus("РЕШЕННЫЕ");
-        Assertions.assertEquals("РЕШЕННЫЕ", jiraProjectPage.getTaskStatus("РЕШЕННЫЕ"));
+        jiraSteps.checkStepChangeStatus("РЕШЕННЫЕ");
 
         jiraSteps.stepChangeStatus("ПЕРЕОТКРЫТ");
-        Assertions.assertEquals("ПЕРЕОТКРЫТ", jiraProjectPage.getTaskStatus("ПЕРЕОТКРЫТ"));
+        jiraSteps.checkStepChangeStatus("ПЕРЕОТКРЫТ");
 
         jiraSteps.stepChangeStatus("ГОТОВО");
-        Assertions.assertEquals("ГОТОВО", jiraProjectPage.getTaskStatus("ГОТОВО"));
+        jiraSteps.checkStepChangeStatus("ГОТОВО");
     }
 }
