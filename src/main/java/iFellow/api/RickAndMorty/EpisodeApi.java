@@ -1,4 +1,4 @@
-package iFellow.api;
+package iFellow.api.RickAndMorty;
 
 import static io.restassured.RestAssured.given;
 

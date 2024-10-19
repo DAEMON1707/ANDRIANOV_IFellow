@@ -6,10 +6,6 @@ import io.restassured.specification.*;
 
 public class Specifications {
 
-    public void postRequest() {
-
-    }
-
     public RequestSpecification baseRequestSpec(String url) {
         return new RequestSpecBuilder()
                 .setBaseUri(url)

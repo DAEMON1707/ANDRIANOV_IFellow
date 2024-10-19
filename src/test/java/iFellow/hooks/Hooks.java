@@ -1,16 +1,20 @@
 package iFellow.hooks;
 
 import iFellow.api.specifications.Specifications;
-import iFellow.properties.Props;
 import io.cucumber.java.Before;
 import io.restassured.RestAssured;
+
+import static iFellow.properties.Props.props;
 
 public class Hooks {
 
     Specifications specifications = new Specifications();
 
-    @Before
-    public void initApiSpec() {
-        RestAssured.requestSpecification = specifications.baseRequestSpec(Props.props.url());
+    public void initApiRickAndMorty() {
+        RestAssured.requestSpecification = specifications.baseRequestSpec(props.urlRickAndMorty());
+    }
+
+    public void initApiReqres() {
+        RestAssured.requestSpecification = specifications.baseRequestSpec(props.urlReqres());
     }
 }

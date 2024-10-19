@@ -9,9 +9,12 @@ import org.aeonbits.owner.ConfigFactory;
 public interface Props extends Config{
     Props props = ConfigFactory.create(Props.class);
 
-    @Config.Key("url")
-    String url();
+    @Config.Key("url.rickandmorty")
+    String urlRickAndMorty();
 
     @Config.Key("characterId")
     Integer characterId();
+
+    @Config.Key("url.reqres")
+    String urlReqres();
 }
